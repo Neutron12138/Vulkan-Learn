@@ -1,0 +1,18 @@
+--------------------
+Time:Tue Feb 07 20:45:48 2023
+Level:Info
+Title:CreateInstance
+Content:Instance created successfully
+
+--------------------
+Time:Tue Feb 07 20:45:49 2023
+Level:Info
+Title:CreateDebugMessenger
+Content:Debug Messenger created successfully
+
+--------------------
+Time:Tue Feb 07 20:46:06 2023
+Level:Info
+Title:onDestroyed
+Content:All objects are cleaned up
+
