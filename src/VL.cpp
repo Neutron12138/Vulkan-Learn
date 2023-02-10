@@ -7,6 +7,7 @@
 #include "FormatUtils.cpp"
 #include "InstanceUtils.cpp"
 #include "DebugUtils.cpp"
+#include "DefaultQueueFamilyIndices.cpp"
 #include "PhysicalDeviceUtils.cpp"
 #include "QueueUtils.cpp"
 #include "DeviceUtils.cpp"

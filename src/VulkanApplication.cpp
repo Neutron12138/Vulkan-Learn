@@ -44,6 +44,8 @@ namespace vl
             quit(EXIT_FAILURE);
         if (!PickPhysicalDevice())
             quit(EXIT_FAILURE);
+        if (!CreateDevice())
+            quit(EXIT_FAILURE);
     }
 
 } // namespace vl

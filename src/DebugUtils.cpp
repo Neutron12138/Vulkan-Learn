@@ -13,7 +13,7 @@ namespace vl
         const VkDebugUtilsMessengerCallbackDataEXT *pCallbackData)
     {
         ntl::log.logu(
-            L"",
+            NTL_STRING("DebugUtils::debug_callback"),
             format_debug_message(
                 messageSeverity,
                 messageTypes,
@@ -53,8 +53,8 @@ namespace vl
         else
         {
             ntl::log.loge(
-                L"DebugUtils::register_debug_callback",
-                L"Unable to get function \"vkCreateDebugUtilsMessengerEXT\"");
+                NTL_STRING("DebugUtils::register_debug_callback"),
+                NTL_STRING("Unable to get function \"vkCreateDebugUtilsMessengerEXT\""));
             result = vk::Result::eErrorExtensionNotPresent;
         }
 
@@ -88,8 +88,8 @@ namespace vl
         if (func == nullptr)
         {
             ntl::log.loge(
-                L"DebugUtils::destroy_debug_callback",
-                L"Unable to get function \"vkDestroyDebugUtilsMessengerEXT\"");
+                NTL_STRING("DebugUtils::destroy_debug_callback"),
+                NTL_STRING("Unable to get function \"vkDestroyDebugUtilsMessengerEXT\""));
             return false;
         }
 
@@ -112,9 +112,9 @@ namespace vl
     {
         ntl::StringStream sstr;
         sstr << std::endl
-             << "severity:\t" << FormatUtils::format_debug_utils_severity(messageSeverity) << std::endl
-             << "type:\t" << FormatUtils::format_debug_utils_type(messageTypes) << std::endl
-             << "data:\t" << FormatUtils::format_debug_utils_data(pCallbackData) << std::endl
+             << NTL_STRING("severity:\t") << FormatUtils::format_debug_utils_severity(messageSeverity) << std::endl
+             << NTL_STRING("type:\t") << FormatUtils::format_debug_utils_type(messageTypes) << std::endl
+             << NTL_STRING("data:\t") << FormatUtils::format_debug_utils_data(pCallbackData) << std::endl
              << std::endl;
         return sstr.str();
     }

@@ -46,6 +46,10 @@ namespace vl
         /// @brief 选择物理设备
         /// @return 是否成功
         virtual bool PickPhysicalDevice() = 0;
+
+        /// @brief 创建逻辑设备
+        /// @return 是否成功
+        virtual bool CreateDevice() = 0;
     };
 } // namespace vl
 

@@ -1,8 +1,7 @@
 #ifndef __VL_FORMATUTILS_HPP__
 #define __VL_FORMATUTILS_HPP__
 
-#define VULKAN_HPP_NO_EXCEPTIONS
-#include <vulkan/vulkan.hpp>
+#include "Vulkan.hpp"
 #include <ntl/NTL.hpp>
 
 namespace vl

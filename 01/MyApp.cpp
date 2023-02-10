@@ -31,9 +31,9 @@ bool MyApp::CreateInstance()
     if (layer_result.result != vk::Result::eSuccess)
     {
         ntl::log.loge(
-            L"CreateInstance",
+            NTL_STRING("CreateInstance"),
             ntl::StringUtils::to_string(
-                L"Failed to get layers, error code:",
+                NTL_STRING("Failed to get layers, error code:"),
                 static_cast<long>(layer_result.result)));
         return false;
     }
@@ -42,8 +42,8 @@ bool MyApp::CreateInstance()
     if (fail.size() != 0)
     {
         ntl::log.loge(
-            L"CreateInstance",
-            L"There are unsupported layers");
+            NTL_STRING("CreateInstance"),
+            NTL_STRING("There are unsupported layers"));
         return false;
     }
 
@@ -52,16 +52,16 @@ bool MyApp::CreateInstance()
     if (instance_result.result != vk::Result::eSuccess)
     {
         ntl::log.loge(
-            L"CreateInstance",
+            NTL_STRING("CreateInstance"),
             ntl::StringUtils::to_string(
-                L"Failed to create an instance, error code:",
+                NTL_STRING("Failed to create an instance, error code:"),
                 static_cast<long>(instance_result.result)));
         return false;
     }
 
     ntl::log.logi(
-        L"CreateInstance",
-        L"Instance created successfully");
+        NTL_STRING("CreateInstance"),
+        NTL_STRING("Instance created successfully"));
     instance = instance_result.value;
 
     return true;
@@ -75,16 +75,16 @@ bool MyApp::SetupDebugMessenger()
     {
 
         ntl::log.loge(
-            L"CreateDebugMessenger",
+            NTL_STRING("CreateDebugMessenger"),
             ntl::StringUtils::to_string(
-                L"Failed to create debug messenger, error code:",
+                NTL_STRING("Failed to create debug messenger, error code:"),
                 static_cast<long>(result.result)));
         return false;
     }
 
     ntl::log.logi(
-        L"CreateDebugMessenger",
-        L"Debug Messenger created successfully");
+        NTL_STRING("CreateDebugMessenger"),
+        NTL_STRING("Debug Messenger created successfully"));
     messenger = result.value;
 
     return true;
@@ -92,20 +92,32 @@ bool MyApp::SetupDebugMessenger()
 
 bool MyApp::PickPhysicalDevice()
 {
-    vk::PhysicalDevice result = pick_suitable_physical_device(instance, is_physical_device_suitable);
+    vk::PhysicalDevice result =
+        pick_suitable_physical_device(
+            instance,
+            queue_family,
+            is_physical_device_suitable<vl::DefaultQueueFamilyIndices>);
     if (result == vk::PhysicalDevice(nullptr))
     {
         ntl::log.loge(
-            L"PickPhysicalDevice",
-            L"Unable to find suitable physical device");
+            NTL_STRING("PickPhysicalDevice"),
+            NTL_STRING("Unable to find suitable physical device"));
         return false;
     }
 
     ntl::log.logi(
-        L"PickPhysicalDevice",
-        L"Successfully found the appropriate physical device");
+        NTL_STRING("PickPhysicalDevice"),
+        NTL_STRING("Successfully found the suitable physical device"));
+    ntl::log.logi(
+        NTL_STRING("PickPhysicalDevice"),
+        queue_family.format());
     device = result;
 
+    return true;
+}
+
+bool MyApp::CreateDevice()
+{
     return true;
 }
 
@@ -115,8 +127,8 @@ void MyApp::onDestroyed()
     instance.destroy();
 
     ntl::log.logi(
-        L"onDestroyed",
-        L"All objects are cleaned up");
+        NTL_STRING("onDestroyed"),
+        NTL_STRING("All objects are cleaned up"));
 }
 
 void MyApp::onDisplay()

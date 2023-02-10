@@ -1,8 +1,6 @@
 #ifndef __VL_VULKANUTILS_HPP__
 #define __VL_VULKANUTILS_HPP__
 
-#define VULKAN_HPP_NO_EXCEPTIONS
-#include <vulkan/vulkan.hpp>
 #include "InstanceUtils.hpp"
 #include "DebugUtils.hpp"
 #include "PhysicalDeviceUtils.hpp"
